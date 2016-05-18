@@ -40,6 +40,9 @@
 - (void)close:(CDVInvokedUrlCommand*)command;
 - (void)injectScriptCode:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
+/* cemerson */- (void)orientationChanged:(NSNotification *)note;
+/* cemerson */- (void)initOrRefreshViewSizeAndBounds;
+/* cemerson */- (void)toggleFullScreen:(CDVInvokedUrlCommand*)command;
 
 @end
 
@@ -82,6 +85,7 @@
     
 }
 
+/* cemerson */ @property (nonatomic, strong) IBOutlet UIBarButtonItem* fullScreenButton; 
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* closeButton;
 @property (nonatomic, strong) IBOutlet UILabel* addressLabel;
@@ -93,6 +97,8 @@
 @property (nonatomic, weak) id <CDVScreenOrientationDelegate> orientationDelegate;
 @property (nonatomic, weak) CDVInAppBrowser* navigationDelegate;
 @property (nonatomic) NSURL* currentURL;
+
+
 
 - (void)close;
 - (void)navigateTo:(NSURL*)url;
