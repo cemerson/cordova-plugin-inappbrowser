@@ -20,7 +20,6 @@
 #import "CDVInAppBrowser.h"
 #import <Cordova/CDVPluginResult.h>
 #import <Cordova/CDVUserAgentUtil.h>
-/* cemerson */ #import <Cordova/CDVJSON.h>
 
 #define    kInAppBrowserTargetSelf @"_self"
 #define    kInAppBrowserTargetSystem @"_system"
@@ -31,7 +30,8 @@
 #define    TOOLBAR_HEIGHT 44.0
 #define    LOCATIONBAR_HEIGHT 21.0
 #define    FOOTER_HEIGHT ((TOOLBAR_HEIGHT) + (LOCATIONBAR_HEIGHT))
-/* cemerson */ #define    BUTTON_BACKGROUND_COLOR @"#448EE3"
+/* cemerson */
+#define    BUTTON_BACKGROUND_COLOR (@"#448EE3")
 
 #pragma mark CDVInAppBrowser
 
@@ -58,15 +58,6 @@
 @end
 
 @implementation CDVInAppBrowser
-
-/* cemerson (start) */ 
-- (CDVInAppBrowser*)initWithWebView:(UIWebView*)theWebView
-{
-    self = [super initWithWebView:theWebView];
-    iab = self;
-    return self;
-}
-/* cemerson (end) */ 
 
 - (void)pluginInitialize
 {
@@ -272,7 +263,8 @@
 
     }else{
         // OLD presentModalViewController APPROACH
-        [self.viewController presentModalViewController:self.inAppBrowserViewController animated:YES];
+        // DEPRECATED: // [self.viewController presentModalViewController:self.inAppBrowserViewController animated:YES];
+        [self.viewController presentViewController:self.inAppBrowserViewController animated:YES completion:nil];
     }
 
     // DEBUG to check subviews
@@ -676,7 +668,9 @@
 - (id)initWithUserAgent:(NSString*)userAgent prevUserAgent:(NSString*)prevUserAgent browserOptions: (CDVInAppBrowserOptions*) browserOptions
 {
     self = [super init];
+    
     if (self != nil) {
+        iab = self;
         _userAgent = userAgent;
         _prevUserAgent = prevUserAgent;
         _browserOptions = browserOptions;
@@ -1302,7 +1296,7 @@
         // default values
         self.location = YES;
         self.toolbar = YES;
-        self.closebuttoncaption = nil;
+        //self.closebuttoncaption = nil;
         self.toolbarposition = kInAppBrowserToolbarBarPositionBottom;
         self.clearcache = NO;
         self.clearsessioncache = NO;
@@ -1436,4 +1430,3 @@
 
 
 @end
-
