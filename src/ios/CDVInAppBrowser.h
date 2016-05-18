@@ -50,6 +50,7 @@
 
 @interface CDVInAppBrowserOptions : NSObject {}
 
+
 @property (nonatomic, assign) BOOL location;
 @property (nonatomic, assign) BOOL toolbar;
 @property (nonatomic, copy) NSString* closebuttoncaption;
@@ -67,6 +68,18 @@
 @property (nonatomic, assign) BOOL suppressesincrementalrendering;
 @property (nonatomic, assign) BOOL hidden;
 @property (nonatomic, assign) BOOL disallowoverscroll;
+
+
+/* cemerson (start) */
+@property (nonatomic, assign) CGFloat vw;
+@property (nonatomic, assign) CGFloat vh;
+@property (nonatomic, assign) CGFloat vx;
+@property (nonatomic, assign) CGFloat vy;
+@property (nonatomic, assign) NSString* buttoncolorbg;
+@property (nonatomic, assign) BOOL fullscreenwhenrotated;
+@property (nonatomic, assign) BOOL fullscreenbuttonenabled;
+@property (nonatomic, assign) BOOL arrowbuttonsenabled;
+/* cemerson (end) */
 
 + (CDVInAppBrowserOptions*)parseOptions:(NSString*)options;
 
@@ -87,8 +100,7 @@
     
 }
 
-/* cemerson */
-@property (nonatomic, strong) IBOutlet UIBarButtonItem* fullScreenButton; 
+/* cemerson */ @property (nonatomic, strong) IBOutlet UIBarButtonItem* fullScreenButton;
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem* closeButton;
 @property (nonatomic, strong) IBOutlet UILabel* addressLabel;
@@ -115,31 +127,6 @@
 @end
 
 @interface CDVInAppBrowserNavigationController : UINavigationController
-
-/* cemerson (start) */
-@property (nonatomic, assign) BOOL location;
-@property (nonatomic, assign) BOOL toolbar;
-@property (nonatomic, copy) NSString* closebuttoncaption;
-@property (nonatomic, copy) NSString* presentationstyle;
-@property (nonatomic, copy) NSString* transitionstyle;
-@property (nonatomic, assign) BOOL enableviewportscale;
-@property (nonatomic, assign) BOOL mediaplaybackrequiresuseraction;
-@property (nonatomic, assign) BOOL allowinlinemediaplayback;
-@property (nonatomic, assign) BOOL keyboarddisplayrequiresuseraction;
-@property (nonatomic, assign) BOOL suppressesincrementalrendering;
-@property (nonatomic, assign) BOOL hidden;
-
-@property (nonatomic, assign) CGFloat vw;
-@property (nonatomic, assign) CGFloat vh;
-@property (nonatomic, assign) CGFloat vx;
-@property (nonatomic, assign) CGFloat vy;
-@property (nonatomic, assign) NSString* buttoncolorbg;
-@property (nonatomic, assign) BOOL fullscreenwhenrotated;
-@property (nonatomic, assign) BOOL fullscreenbuttonenabled;
-@property (nonatomic, assign) BOOL arrowbuttonsenabled;
-
-+ (CDVInAppBrowserOptions*)parseOptions:(NSString*)options;
-/* cemerson (end) */
 
 @property (nonatomic, weak) id <CDVScreenOrientationDelegate> orientationDelegate;
 
